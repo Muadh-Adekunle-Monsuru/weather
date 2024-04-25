@@ -48,7 +48,6 @@ function App() {
 	useEffect(() => {
 		getBackground();
 		callDaily({ lat: 52.367, lon: 4.904 });
-		callForecast();
 	}, []);
 
 	const getBackground = async () => {
@@ -98,14 +97,12 @@ function App() {
 		} catch (e) {
 			console.log('Error calling api', e);
 		}
-	}
-	function callForecast() {
 		try {
 			axios
 				.get('https://api.openweathermap.org/data/2.5/forecast?', {
 					params: {
-						lat: 44.34,
-						lon: 10.99,
+						lat: lat,
+						lon: lon,
 						appid: '2ed890b8574d046e1571aadd1a1934f7',
 						units: 'metric',
 					},
